@@ -24,7 +24,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.lab3coffeeshopapp.R
 import androidx.navigation.NavController
+import com.example.lab3coffeeshopapp.Routes
 
 @Composable
 fun Login(navController: NavController) {
@@ -42,7 +44,7 @@ fun Login(navController: NavController) {
             .background(brush = gradient)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.safari),
+            painter = painterResource(id = R.drawable.coffeebackground),
             contentDescription = "Logo"
         )
 
@@ -83,11 +85,7 @@ fun Login(navController: NavController) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Button(onClick = {
-            if (isValidCredentials(email.value, password.value)) {
-                navController.navigate(Routes.Screen.Home.route)
-            } else {
-                errorMessage.value = "Invalid email or password. Please try again."
-            }
+
         }) {
             Text(text = "Log In")
         }

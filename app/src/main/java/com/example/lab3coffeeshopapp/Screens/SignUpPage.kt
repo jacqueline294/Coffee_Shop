@@ -1,6 +1,5 @@
 package com.example.lab3coffeeshopapp.Screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -37,8 +36,8 @@ fun SignUpPage(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            // Apply the background image
-            .background(brush = ImageShader(image = backgroundImage, contentScale = ContentScale.FillBounds))
+            //.background(brush = ImageShader(image = backgroundImage,
+                //contentScale = ContentScale.FillBounds))
     ) {
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -73,6 +72,10 @@ fun SignUpPage(navController: NavController) {
         }
     }
 }
+
+
+
+
 
 
 fun handleFormSubmission(name: String, email: String, password: String, navController: NavController) {
