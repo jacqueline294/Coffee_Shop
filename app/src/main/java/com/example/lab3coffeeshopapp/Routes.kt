@@ -2,11 +2,10 @@ package com.example.lab3coffeeshopapp
 
 object Routes {
     sealed class Screen(val route: String) {
-    object Start : Screen("start")
-    object SignUp : Screen("signup")
+
+    object SignUp : Screen("signUpPage")
     object Login : Screen("login")
-    object Home : Screen("home")
+    object Home : Screen("HomePage")
 }
 
-}
 }

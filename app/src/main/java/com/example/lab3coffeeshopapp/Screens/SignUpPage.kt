@@ -15,8 +15,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageShader
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -24,33 +24,27 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-
-
+import com.example.lab3coffeeshopapp.R
+import com.example.lab3coffeeshopapp.Routes
 
 @Composable
-fun SignUpPage(navController: NavController){
+fun SignUpPage(navController: NavController) {
 
-    val gradient = Brush.horizontalGradient(
-        colors = listOf(Color.Magenta, Color.Blue),
-        startX = 0f,
-        endX = 1000f
-    )
+    val backgroundImage = painterResource(id = R.drawable.coffeebackground)
 
-
-    Column (
+    Column(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier= Modifier
+        modifier = Modifier
             .fillMaxSize()
-            .background(brush = gradient)
-    ){
-        Image(painter = painterResource(id = R.drawable.safari), contentDescription = "Logo")
-
+            // Apply the background image
+            .background(brush = ImageShader(image = backgroundImage, contentScale = ContentScale.FillBounds))
+    ) {
         Spacer(modifier = Modifier.height(20.dp))
 
         Text(text = "Welcome Sign up Here", style = TextStyle(fontFamily = FontFamily.Cursive),
             fontSize = 32.sp,
-            fontWeight= FontWeight.Bold
+            fontWeight = FontWeight.Bold
         )
 
         Spacer(modifier = Modifier.height(5.dp))
@@ -79,6 +73,9 @@ fun SignUpPage(navController: NavController){
         }
     }
 }
+
+
 fun handleFormSubmission(name: String, email: String, password: String, navController: NavController) {
     println("Name: $name, Email: $email, Password: $password")
     navController.navigate(Routes.Screen.Login.route)
+}
