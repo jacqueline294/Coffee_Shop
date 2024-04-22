@@ -5,18 +5,22 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.lab3coffeeshopapp.Screens.HomePage
+import com.example.lab3coffeeshopapp.Screens.DrinksListPage
 import com.example.lab3coffeeshopapp.Screens.LoginPage
-import com.example.lab3coffeeshopapp.Screens.SignUpPage
+import com.example.lab3coffeeshopapp.Screens.MapPage
+import com.example.lab3coffeeshopapp.Screens.RegistrationPage
 
 
 @Composable
-fun Nav() {
+fun AppNavigator() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Routes.Screen.SignUp.route) {
-        composable(Routes.Screen.SignUp.route) { SignUpPage() }
-        composable(Routes.Screen.Login.route) { LoginPage(navController) }
-        composable(Routes.Screen.Home.route) { HomePage(navController) }
-
+    NavHost(navController, startDestination = "login") {
+        composable("login") { LoginPage() }
+        composable("SignUp") { RegistrationPage() }
+        composable("drinks") { DrinksListPage() }
+        composable("map") { MapPage() }
     }
 }
+
+
+

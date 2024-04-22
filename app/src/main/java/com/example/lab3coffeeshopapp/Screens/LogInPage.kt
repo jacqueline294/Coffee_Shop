@@ -1,7 +1,6 @@
 package com.example.lab3coffeeshopapp.Screens
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -11,14 +10,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
-
-
+import androidx.navigation.NavController
 
 
 @Composable
-fun LoginPage(onLogin: (String, String) -> Unit) {
+fun LoginPage(navController: NavController) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
@@ -43,7 +40,7 @@ fun LoginPage(onLogin: (String, String) -> Unit) {
         Button(onClick = {
             isLoading = true
             errorMessage = ""
-            onLogin(username, password)
+            onLogin(password)
         }) {
             Text("Login/Register")
         }
@@ -52,10 +49,14 @@ fun LoginPage(onLogin: (String, String) -> Unit) {
                 Alignment.CenterHorizontally))
         }
         if (errorMessage.isNotEmpty()) {
-            Text(text = errorMessage, color = MaterialTheme.colors.error,
+            Text(text = errorMessage, color = MaterialTheme.colorScheme.error,
                 modifier = Modifier.align(Alignment.CenterHorizontally))
         }
     }
+}
+
+fun onLogin(password: String) {
+
 }
 
 
